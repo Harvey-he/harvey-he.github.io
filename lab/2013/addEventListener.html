@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事件监听</title>
+	</head>
+	<body>
+		<h3>按任意键或任意点击屏幕</h3>
+		<div id="log">
+			
+		</div>
+		<script type="text/javascript">
+			var log = document.getElementById("log"),
+				out = [];
+
+			document.addEventListener('click',logEventInfo,false);
+			document.addEventListener('keypress',logEventInfo,false);
+
+			function logEventInfo (ev) {
+				log.innerHTML = '';
+				out = '<ul>';
+
+				for( i in ev){
+					if(typeof ev[i] === 'function' || i === i.toUpperCase()){
+						continue;
+					}
+					out += '<li><span>'+ i + '</span>: '+ ev[i] + '</li>';
+				}
+
+				log.innerHTML += out + '</ul>';
+			}
+		</script>
+	</body>
+</html>
