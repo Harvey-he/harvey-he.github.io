@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="harvey" />
+    <title>Harvey-He - 关于</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="/feed/" rel="alternate" title="harvey" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css" />
+    <link rel="stylesheet" href="/media/css/highlight.css" />
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/media/js/outliner.js"></script>
+  </head>
+<!--  <body> 
+-->
+  <script type="text/javascript">
+    function setTimeSpan(){
+    	var date = new Date();
+    	timeSpan.innerText=date.format('yyyy-MM-dd hh:mm:ss');
+    }
+    
+    Date.prototype.format = function(format)
+		{
+    var o =
+    	{
+    	    "M+" : this.getMonth()+1, //month
+    	    "d+" : this.getDate(),    //day
+    	    "h+" : this.getHours(),   //hour
+    	    "m+" : this.getMinutes(), //minute
+    	    "s+" : this.getSeconds(), //second
+    	    "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+    	    "S" : this.getMilliseconds() //millisecond
+    	}
+    	if(/(y+)/.test(format))
+    	format=format.replace(RegExp.$1,(this.getFullYear()+"").substr(4 - RegExp.$1.length));
+    	for(var k in o)
+    	if(new RegExp("("+ k +")").test(format))
+    	format = format.replace(RegExp.$1,RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+    	return format;
+		}
+  </script>
+  <body onLoad="setInterval(setTimeSpan,1000);">
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>关于</h1>
+        </header>
+        <nav id="real_nav">
+        <span><a title="home" class="" href="/">home</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <!--<span><a title="友情链接" class="" href="/links/">链接</a></span>-->
+        <span><a title="guestbook" class="" href="/guestbook/">guestbook</a></span>
+        <span><a title="lab" class="" href="/lab/">lab</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+<!--        <span><a title="种子订阅" class="" href="/feed/" target="_blank">订阅</a></span> 
+-->
+        </nav>
+        <article class="content">
+        <section class="post">
+<p>热爱编程。</p>
+
+<p>目前从事JavaScript研发工作，</p>
+
+<p>关注并喜欢研究 HTML5，Python，Java，Linux，Nginx，C/C++等技术。</p>
+
+<p>想成为一个vim控。</p>
+
+<p>业余爱好电影和篮球。</p>
+
+<p>偏执的认为民谣和摇滚才是真正的音乐，想要去旅行，尤其想背个背包登个自行车畅游中国，可是一直没能成行，这是我三十岁之前的梦想。</p>
+
+<hr />
+
+<h3>联系方式：</h3>
+
+<p>ＱＱ：<a href="tencent://message/?uin=475147731">475147731</a></p>
+
+<p>网站：<a href="http://harvey-he.github.io">Harvey-He</a></p>
+
+<p>邮箱：<a href="mailto:harvey-he@qq.com">harvey-he@qq.com</a></p>
+
+<p>GitHub : <a href="http://github.com/harvey-he">http://github.com/harvey-he</a></p>
+
+<hr />
+
+<p><a href="http://weibo.com/u/1735199545"><img src="http://service.t.sina.com.cn/widget/qmd/1735199545/d643d182/7.png" alt="新浪微博" /></a></p>
+
+</section>
+
+
+
+        </article>
+        <a style="position:fixed;bottom:5px;right:5px;" href="#" title="Back to Top">
+            <img src="/assets/btt.png" />
+        </a> 
+      </div>
+
+    <footer>
+        <p><small>
+            <a href="http://github.com/harvey-he/harvey-he.github.com/new/master/_posts" target="_blank" title="撰写文章">Po</a>wer<a href="http://github.com/harvey-he/harvey-he.github.com/edit/master/about/index.md" target="_blank" title="编辑页面">ed</a> by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="http://github.com/harvey-he/harvey-he.github.com" target="_blank" title="项目主页">GitHub</a> | Copyright 2013 - 2013 by <a href="/about/">harvey-he</a> | <span class="label label-info" id="timeSpan"></span></small></p>
+    </footer>
+
+    </div>
+  </body>
+</html>

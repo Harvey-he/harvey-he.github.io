@@ -1,3 +1,14 @@
+---
+layout: post
+title: "Welcome to harvey‘s blog"
+categories:
+- 随笔
+tags:
+- Welecome
+
+
+---
+   
 harvey-he.github.com
 ====================
 
@@ -10,4 +21,5 @@ lab：  是我的实验室，这里是我工作中，学习中所写的Demo；
 
 
 最后还是要感谢Github！谢谢！
-![Alt text](assets/welcome.jpg)
+![Alt text](../assets/welcome.jpg)
+
