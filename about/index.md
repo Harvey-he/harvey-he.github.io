@@ -4,9 +4,9 @@ layout: page
 comments: no
 ---
 
-热爱编程。
+热爱编程，热爱生活，热爱运动。
 
-目前从事JavaScript研发工作，
+目前从事JavaScript研发工作，业余事件喜欢捣鼓NodeJs。
 
 关注并喜欢研究 HTML5，Python，Java，Linux，Nginx，C/C++等技术。
 
