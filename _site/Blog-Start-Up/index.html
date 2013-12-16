@@ -85,9 +85,9 @@
 
 <p>harvey-he的个人园地</p>
 
-<p>issue：是我的Blog，记录所学、所思、所做；</p>
+<p>这里我的Blog，基于jekyll构建,记录所学、所思、所做；</p>
 
-<p>lab：  是我的实验室，这里是我工作中，学习中所写的Demo；</p>
+<p>lab：  是我的实验室，是我工作中，学习中所写的Demo；</p>
 
 <p>最后还是要感谢Github！谢谢！
 <img src="../assets/welcome.jpg" alt="Alt text" /></p>
@@ -98,7 +98,7 @@
 <span>
 	<a   class="pageNavInvalid"  >上一篇</a>
 	&nbsp;&nbsp;&nbsp;
-	<a   class="pageNavInvalid"  >下一篇</a>
+	<a  href="/Blog-Meta-Detailed/" class="pageNav"  >下一篇</a>
 </span>
 </section>
 
@@ -127,6 +127,8 @@ $(function(){
         }
         else if (e.which == 39 || e.which == 75) {  // Right arrow and K
             
+        url = 'http://harvey-he.github.io/Blog-Meta-Detailed/';
+        
         }
         if (url) {
             window.location = url;
