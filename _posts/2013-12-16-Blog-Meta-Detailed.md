@@ -101,6 +101,7 @@ http-equiv属性用于提供HTTP协议的响应头报文（MIME文档头），�
 	* 作用：
 		* viewport并非只是ios上的独有属性，在android、winphone上同样也有viewport。它们要解决的问题是相同的，即无视设备的真实分辨率，直接通过dpi，在物理尺寸和浏览器之间重设分辨率，这个分辨率和设备的分辨率无关。
 		* 比如，你拿个3.5寸 640 * 960的iphone4，4.0寸 1280 * 720的小米2，9.7寸 1024*768的ipad，虽然设备的分辨率不同,物理尺寸也不同，但你可以通过设置viewport让它们在浏览器里有相同的分辨率。比如说，你的网站是800px宽，你可以通过设置viewport的width=800，来让你的网站在这三个不同的设备上都刚好满屏显示你的网站。
+	* 示例：```<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">```
 
 ###参考资料
 [http://www.dreamdu.com/xhtml/tag_meta/](http://www.dreamdu.com/xhtml/tag_meta/)
