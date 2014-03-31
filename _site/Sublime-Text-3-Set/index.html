@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="harvey" />
-    <title>Welcome to harvey‘s blog</title>
+    <title>Sublime Text 3设置指南</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     <link href="/feed/" rel="alternate" title="harvey" type="application/atom+xml" />
     <link rel="stylesheet" href="/media/css/style.css" />
@@ -43,7 +43,7 @@
     <div id="container">
       <div id="main" role="main">
         <header>
-        <h1>Welcome to harvey‘s blog</h1>
+        <h1>Sublime Text 3设置指南</h1>
         </header>
         <nav id="real_nav">
         <span><a title="home" class="" href="/">home</a></span>
@@ -59,14 +59,14 @@
         <article class="content">
         <section class="meta">
 <span class="time">
-  <time datetime="2013-11-29">2013-11-29</time>
+  <time datetime="2013-08-12">2013-08-12</time>
 </span>
 
  | 
 <span class="categories">
   categories
   
-  <a href="/categories/#随笔" title="随笔">随笔</a>&nbsp;
+  <a href="/categories/#ide" title="ide">ide</a>&nbsp;
   
 </span>
 
@@ -75,30 +75,87 @@
 <span class="tags">
   tags
   
-  <a href="/tags/#Welecome" title="Welecome">Welecome</a>&nbsp;
+  <a href="/tags/#Sublime" title="Sublime">Sublime</a>&nbsp;
   
 </span>
 
 </section>
 <section class="post">
-<h1>harvey-he.github.com</h1>
+<h2>Sublime Text 3设置指南</h2>
 
-<p>harvey-he的个人园地</p>
+<h3>安装package control</h3>
 
-<p>这里我的Blog，基于jekyll构建,记录所学、所思、所做；</p>
+<p>下载package control源码安装包，并解压：</p>
 
-<p>lab：  是我的实验室，是我工作中，学习中所写的Demo；</p>
+<p><a href="http://yun.baidu.com/share/link?shareid=1372495160&amp;uk=3205258044&amp;third=0&amp;fid=2452604597">http://yun.baidu.com/share/link?shareid=1372495160&amp;uk=3205258044&amp;third=0&amp;fid=2452604597</a></p>
 
-<p>最后还是要感谢Github！谢谢！
-<img src="../assets/welcome.jpg" alt="Alt text" /></p>
+<p>启动sublime text 3，打开菜单Preferences—>Browse Packages...,将解压所得的Package Control文件夹复制到此文件夹</p>
+
+<p>重启Sublime Text 3，按下Ctrl + Shift + P，输入install，出现Package Control: Install Packages，安装成功；</p>
+
+<h3>安装插件</h3>
+
+<p>必安插件：</p>
+
+<ul>
+<li>Emmet（原名Zen Coding）</li>
+<li>Alignment</li>
+<li>AngularJs Snippets</li>
+<li>BracketHighlighter</li>
+<li>jQuery</li>
+<li>jQuery Snippets</li>
+<li>JsFormat</li>
+<li>SideBarEnhancements</li>
+<li>TrailingSpaces</li>
+</ul>
+
+
+<h3>安装主题</h3>
+
+<p>推荐主题：Flatland(这是我最喜欢的主题)</p>
+
+<p>下载主题包，并解压：<a href="http://pan.baidu.com/share/link?shareid=1618915827&amp;uk=3205258044">http://pan.baidu.com/share/link?shareid=1618915827&amp;uk=3205258044</a></p>
+
+<p>启动sublime text 3，打开菜单Preferences—>Browse Packages...,将解压所得的Theme-Flatland文件夹复制到此文件夹</p>
+
+<p>修改 Preferences 文件，通过 Sublime Text 3 的菜单 “Preferences > Settings - User” 可打开用户配置文件，在其中添加（或修改原来的设置）：</p>
+
+<pre><code>{
+    "theme": "Flatland Dark.sublime-theme",
+    "color_scheme": "Packages/Theme - Flatland/Flatland Dark.tmTheme"
+}
+</code></pre>
+
+<p>保存便即刻生效；</p>
+
+<h3>解决Ubuntu下不能输入中文问题</h3>
+
+<p>第一步：安装开源字体，“文泉驿字体</p>
+
+<pre><code>sudo apt-get install xfonts-wqy
+</code></pre>
+
+<p>第二步：配置Sublime Text 3的Setting User,添加如下内容</p>
+
+<pre><code>"font_face": "WenQuanYi Micro Hei Mono"
+</code></pre>
+
+<p>第三步：最后安装一个sublime text 3的插件 InputHelper，用于输入中文</p>
+
+<pre><code>cd ~/.config/sublime-text-3/Packages
+
+git clone https://github.com/xgenvn/InputHelper.git
+</code></pre>
+
+<p>到此，按下Ctrl + Shift + Z，输入中文；</p>
 
 </section>
 <section align="right">
 <br/>
 <span>
-	<a  href="/Sublime-Text-3-Set/" class="pageNav"  >上一篇</a>
+	<a   class="pageNavInvalid"  >上一篇</a>
 	&nbsp;&nbsp;&nbsp;
-	<a  href="/Blog-Meta-Detailed/" class="pageNav"  >下一篇</a>
+	<a  href="/Blog-Start-Up/" class="pageNav"  >下一篇</a>
 </span>
 </section>
 
@@ -124,12 +181,10 @@ $(function(){
     var url = false;
         if (e.which == 37 || e.which == 74) {  // Left arrow and J
             
-        url = 'http://harvey-he.github.io/Sublime-Text-3-Set/';
-        
         }
         else if (e.which == 39 || e.which == 75) {  // Right arrow and K
             
-        url = 'http://harvey-he.github.io/Blog-Meta-Detailed/';
+        url = 'http://harvey-he.github.io/Blog-Start-Up/';
         
         }
         if (url) {
@@ -147,7 +202,7 @@ $(function(){
 
     <footer>
         <p><small>
-            <a href="http://github.com/harvey-he/harvey-he.github.io/new/master/_posts" target="_blank" title="撰写文章">Po</a>wer<a href="http://github.com/harvey-he/harvey-he.github.io/edit/master/_posts/2013-11-29-Blog-Start-Up.md" target="_blank" title="编辑页面">ed</a> by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="http://github.com/harvey-he/harvey-he.github.com" target="_blank" title="项目主页">GitHub</a> | Copyright 2013 - 2014 by <a href="/about/">harvey-he</a> | <span class="label label-info" id="timeSpan"></span></small></p>
+            <a href="http://github.com/harvey-he/harvey-he.github.io/new/master/_posts" target="_blank" title="撰写文章">Po</a>wer<a href="http://github.com/harvey-he/harvey-he.github.io/edit/master/_posts/2013-08-12-Sublime-Text-3-Set.md" target="_blank" title="编辑页面">ed</a> by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="http://github.com/harvey-he/harvey-he.github.com" target="_blank" title="项目主页">GitHub</a> | Copyright 2013 - 2014 by <a href="/about/">harvey-he</a> | <span class="label label-info" id="timeSpan"></span></small></p>
     </footer>
 
     </div>
