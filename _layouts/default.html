@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="/media/css/style.css" />
     <link rel="stylesheet" href="/media/css/highlight.css" />
     <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="/media/js/outliner.js"></script>
+    <link href="/media/prettify/prettify.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/media/prettify/prettify.js"></script>
+    <script type="text/javascript" src="/media/js/outliner.js"></script>
   </head>
 <!--  <body> 
 -->
@@ -39,7 +41,7 @@
     	return format;
 		}
   </script>
-  <body onLoad="setInterval(setTimeSpan,1000);">
+  <body onLoad="setInterval(setTimeSpan,1000);prettyPrint();">
     <div id="container">
       <div id="main" role="main">
         <header>
@@ -70,5 +72,13 @@
     </footer>
 
     </div>
+    <script type="text/javascript">
+        $(function() {
+            window.prettyPrint && prettyPrint();
+        });
+        $(function() {
+            $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto');
+        });
+    </script>
   </body>
 </html>

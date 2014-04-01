@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="/media/css/style.css" />
     <link rel="stylesheet" href="/media/css/highlight.css" />
     <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="/media/js/outliner.js"></script>
+    <link href="/media/prettify/prettify.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/media/prettify/prettify.js"></script>
+    <script type="text/javascript" src="/media/js/outliner.js"></script>
   </head>
 <!--  <body> 
 -->
@@ -39,7 +41,7 @@
     	return format;
 		}
   </script>
-  <body onLoad="setInterval(setTimeSpan,1000);">
+  <body onLoad="setInterval(setTimeSpan,1000);prettyPrint();">
     <div id="container">
       <div id="main" role="main">
         <header>
@@ -120,7 +122,7 @@
 
 <p>修改 Preferences 文件，通过 Sublime Text 3 的菜单 “Preferences > Settings - User” 可打开用户配置文件，在其中添加（或修改原来的设置）：</p>
 
-<pre><code>{
+<pre><code class="bash">{
     "theme": "Flatland Dark.sublime-theme",
     "color_scheme": "Packages/Theme - Flatland/Flatland Dark.tmTheme"
 }
@@ -132,18 +134,17 @@
 
 <p>第一步：安装开源字体，“文泉驿字体</p>
 
-<pre><code>sudo apt-get install xfonts-wqy
+<pre><code class="bash">sudo apt-get install xfonts-wqy
 </code></pre>
 
 <p>第二步：配置Sublime Text 3的Setting User,添加如下内容</p>
 
-<pre><code>"font_face": "WenQuanYi Micro Hei Mono"
+<pre><code class="bash">"font_face": "WenQuanYi Micro Hei Mono"
 </code></pre>
 
 <p>第三步：最后安装一个sublime text 3的插件 InputHelper，用于输入中文</p>
 
-<pre><code>cd ~/.config/sublime-text-3/Packages
-
+<pre><code class="bash">cd ~/.config/sublime-text-3/Packages
 git clone https://github.com/xgenvn/InputHelper.git
 </code></pre>
 
@@ -153,7 +154,7 @@ git clone https://github.com/xgenvn/InputHelper.git
 <section align="right">
 <br/>
 <span>
-	<a   class="pageNavInvalid"  >上一篇</a>
+	<a  href="/Angular-Learn-way/" class="pageNav"  >上一篇</a>
 	&nbsp;&nbsp;&nbsp;
 	<a  href="/Blog-Start-Up/" class="pageNav"  >下一篇</a>
 </span>
@@ -181,6 +182,8 @@ $(function(){
     var url = false;
         if (e.which == 37 || e.which == 74) {  // Left arrow and J
             
+        url = 'http://harvey-he.github.io/Angular-Learn-way/';
+        
         }
         else if (e.which == 39 || e.which == 75) {  // Right arrow and K
             
@@ -206,5 +209,13 @@ $(function(){
     </footer>
 
     </div>
+    <script type="text/javascript">
+        $(function() {
+            window.prettyPrint && prettyPrint();
+        });
+        $(function() {
+            $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto');
+        });
+    </script>
   </body>
 </html>

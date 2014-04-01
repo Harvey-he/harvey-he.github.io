@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="harvey" />
+    <title>Nginx 搭建流媒体服务器（centOS）</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="/feed/" rel="alternate" title="harvey" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css" />
+    <link rel="stylesheet" href="/media/css/highlight.css" />
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+    <link href="/media/prettify/prettify.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/media/prettify/prettify.js"></script>
+    <script type="text/javascript" src="/media/js/outliner.js"></script>
+  </head>
+<!--  <body> 
+-->
+  <script type="text/javascript">
+    function setTimeSpan(){
+    	var date = new Date();
+    	timeSpan.innerText=date.format('yyyy-MM-dd hh:mm:ss');
+    }
+    
+    Date.prototype.format = function(format)
+		{
+    var o =
+    	{
+    	    "M+" : this.getMonth()+1, //month
+    	    "d+" : this.getDate(),    //day
+    	    "h+" : this.getHours(),   //hour
+    	    "m+" : this.getMinutes(), //minute
+    	    "s+" : this.getSeconds(), //second
+    	    "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+    	    "S" : this.getMilliseconds() //millisecond
+    	}
+    	if(/(y+)/.test(format))
+    	format=format.replace(RegExp.$1,(this.getFullYear()+"").substr(4 - RegExp.$1.length));
+    	for(var k in o)
+    	if(new RegExp("("+ k +")").test(format))
+    	format = format.replace(RegExp.$1,RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+    	return format;
+		}
+  </script>
+  <body onLoad="setInterval(setTimeSpan,1000);prettyPrint();">
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>Nginx 搭建流媒体服务器（centOS）</h1>
+        </header>
+        <nav id="real_nav">
+        <span><a title="home" class="" href="/">home</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <!--<span><a title="友情链接" class="" href="/links/">链接</a></span>-->
+        <span><a title="guestbook" class="" href="/guestbook/">guestbook</a></span>
+        <span><a title="lab" class="" href="/lab/">lab</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+<!--        <span><a title="种子订阅" class="" href="/feed/" target="_blank">订阅</a></span> 
+-->
+        </nav>
+        <article class="content">
+        <section class="meta">
+<span class="time">
+  <time datetime="2013-05-18">2013-05-18</time>
+</span>
+
+ | 
+<span class="categories">
+  categories
+  
+  <a href="/categories/#nginx" title="nginx">nginx</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  tags
+  
+  <a href="/tags/#nginx,流媒体,服务器" title="nginx,流媒体,服务器">nginx,流媒体,服务器</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h2>Nginx 搭建流媒体服务器（centOS）</h2>
+
+<h3>1. 安装gcc</h3>
+
+<p>命令：<br/>
+<code>bash
+yum –y install wget tar gcc*
+</code></p>
+
+<p>等待安装完毕………………</p>
+
+<h3>2. 安装libssl</h3>
+
+<p>命令：<br/>
+<code>bash
+yum –y install wget tar libssl*
+</code></p>
+
+<p>等待安装完毕………………</p>
+
+<h3>3. 安装pcre</h3>
+
+<p>命令：<br/>
+<code>bash
+yum –y install wget tar pcre*
+</code></p>
+
+<p>等待安装完毕………………</p>
+
+<h3>4. 安装openssl</h3>
+
+<p>命令：<br/>
+<code>bash
+yum –y install wget tar openssl*
+</code></p>
+
+<p>等待安装完毕………………</p>
+
+<h3>5. 安装popt</h3>
+
+<p>命令：</p>
+
+<pre><code class="bash">yum –y install wget tar popt*
+</code></pre>
+
+<p>等待安装完毕………………</p>
+
+<p>好！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！</p>
+
+<p>到此为止；所有的nginx依赖包安装完毕！</p>
+
+<p>接下来开始编译安装流媒体服务器</p>
+
+<hr />
+
+<h3>1. 下载nginx源码包</h3>
+
+<p>命令：</p>
+
+<pre><code class="bash">wgethttp://www.nginx.org/download/nginx-1.0.11.tar.gz  
+tar zxvf nginx-1.0.11.tar.gz
+</code></pre>
+
+<h3>2. 添加h.264支持模块包</h3>
+
+<p>下载nginx_mod_h264_streaming包；</p>
+
+<p>命令：</p>
+
+<pre><code class="bash">wget http://h264.code-shop.com/download/nginx_mod_h264_streaming-2.2.7.tar.gz
+
+tar zxvfnginx_mod_h264_streaming-2.2.7.tar.gz
+</code></pre>
+
+<p>修改解压文件下</p>
+
+<p>src文件夹下的ngx_http_streaming_module.c文件</p>
+
+<p>将此语句块注释掉；</p>
+
+<p>修改后将此模块文件夹拷贝到nginx解压后的文件夹中；</p>
+
+<h3>3. 添加防盗链模块</h3>
+
+<p>下载NginxHttpAccessKeyModule</p>
+
+<p>命令：</p>
+
+<pre><code class="bash">wget http://wiki.nginx.org/images/5/51/Nginx-accesskey-2.0.3.tar.gz  
+tar -zxvf Nginx-accesskey-2.0.3.tar.gz
+</code></pre>
+
+<p>修改文件夹下修改下配置文件讲config文件中的“$HTTP_ACCESSKEY_MODULE”改成“ngx_http_accesskey_module”，不改的话没办法开启防盗链模块。</p>
+
+<p>修改后的将此模块文件夹拷贝到nginx解压后的文件夹中；</p>
+
+<h3>4. 开始编译安装：</h3>
+
+<p>a)</p>
+
+<pre><code class="bash">useradd stream
+</code></pre>
+
+<p>b)</p>
+
+<pre><code class="bash">./configure--prefix=/usr/local/nginx 
+--user=stream 
+--group=stream 
+--with-http_stub_status_module 
+--with-http_flv_module 
+--add-module=./nginx-accesskey-2.0.3 
+--add-module=./nginx_mod_h264_streaming-2.2.7 
+--with-http_ssl_module 
+--with-cc-opt='-O3' 
+</code></pre>
+
+<p>（注意：如上的命令都在一行内，每个--与前一句话都有一个空格隔开）</p>
+
+<p>c)</p>
+
+<pre><code class="bash">make &amp;&amp; make install
+</code></pre>
+
+<p>安装完成后的默认路径为：/usr/local/nginx/</p>
+
+<p>修改conf文件夹下的配置文件：nginx.conf</p>
+
+<pre><code class="bash">worker_processes  1;
+#pid        logs/nginx.pid;
+events {
+    worker_connections  1024;
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;  
+    keepalive_timeout  65;
+    server {
+        listen       80;
+        server_name  192.168.203.149;
+        #limit_rate_after 5m;    ####在flv视频文件下载了5M以后开始限速
+        #limit_rate 512k;         ####速度限制为512K      
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+        location ~ \.flv$ {
+            flv;
+        }
+        location ~ \.mp4$ {
+            mp4;
+        }
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+}
+</code></pre>
+
+<h3>5. 将nginx做成Services；</h3>
+
+<p>命令：</p>
+
+<pre><code class="bash">wget -c http://soft.vpser.net/lnmp/ext/init.d.nginx
+cp init.d.nginx /etc/init.d/nginx
+chmod +x /etc/init.d/nginx
+/etc/init.d/nginx start
+</code></pre>
+
+<hr />
+
+<p>安装yamdi
+yadmi的作用是为flv文件添加重要帧，才能完成拖动播放</p>
+
+<h3>下载yadmi</h3>
+
+<pre><code class="bash">wget http://sourceforge.net/projects/yamdi/files/yamdi/1.4/yamdi-1.4.tar.gz/download
+</code></pre>
+
+<h3>安装yadmi</h3>
+
+<pre><code class="bash">tar xzvfyamdi-1.4.tar.gz
+cd yamdi-1.4
+make &amp;&amp;make install
+</code></pre>
+
+<p>运用方法：</p>
+
+<pre><code class="bash">yamdi -i input.flv -o out.flv
+</code></pre>
+
+</section>
+<section align="right">
+<br/>
+<span>
+	<a   class="pageNavInvalid"  >上一篇</a>
+	&nbsp;&nbsp;&nbsp;
+	<a  href="/Angular-Learn-way/" class="pageNav"  >下一篇</a>
+</span>
+</section>
+
+	
+	<div class="ds-thread" />
+		
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"harvey-he"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://harvey-he.github.io/Angular-Learn-way/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+        </article>
+        <a style="position:fixed;bottom:5px;right:5px;" href="#" title="Back to Top">
+            <img src="/assets/btt.png" />
+        </a> 
+      </div>
+
+    <footer>
+        <p><small>
+            <a href="http://github.com/harvey-he/harvey-he.github.io/new/master/_posts" target="_blank" title="撰写文章">Po</a>wer<a href="http://github.com/harvey-he/harvey-he.github.io/edit/master/_posts/2013-05-18-Setup-Video-Server.md" target="_blank" title="编辑页面">ed</a> by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="http://github.com/harvey-he/harvey-he.github.com" target="_blank" title="项目主页">GitHub</a> | Copyright 2013 - 2014 by <a href="/about/">harvey-he</a> | <span class="label label-info" id="timeSpan"></span></small></p>
+    </footer>
+
+    </div>
+    <script type="text/javascript">
+        $(function() {
+            window.prettyPrint && prettyPrint();
+        });
+        $(function() {
+            $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto');
+        });
+    </script>
+  </body>
+</html>

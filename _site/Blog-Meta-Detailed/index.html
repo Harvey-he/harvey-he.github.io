@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="/media/css/style.css" />
     <link rel="stylesheet" href="/media/css/highlight.css" />
     <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="/media/js/outliner.js"></script>
+    <link href="/media/prettify/prettify.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/media/prettify/prettify.js"></script>
+    <script type="text/javascript" src="/media/js/outliner.js"></script>
   </head>
 <!--  <body> 
 -->
@@ -39,7 +41,7 @@
     	return format;
 		}
   </script>
-  <body onLoad="setInterval(setTimeSpan,1000);">
+  <body onLoad="setInterval(setTimeSpan,1000);prettyPrint();">
     <div id="container">
       <div id="main" role="main">
         <header>
@@ -89,7 +91,10 @@
 
 <h3>meta属性</h3>
 
-<p>meta属性主要分为两组,新的HTML5标准中，将charset单独拿出来作为了一个属性；这里就不为它单独分组了。示例： <code>&lt;meta charset="utf-8" /&gt;</code></p>
+<p>meta属性主要分为两组,新的HTML5标准中，将charset单独拿出来作为了一个属性；这里就不为它单独分组了。示例：
+<code>
+&lt;meta charset="utf-8" /&gt;
+</code></p>
 
 <p><strong>name属性与content属性组合</strong></p>
 
@@ -110,36 +115,54 @@
 
 <ul>
 <li>用以定义文件的MIME类型，以及编码信息</li>
-<li>示例： <code>&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8" /&gt;</code></li>
+<li>示例：
+<code>
+&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8" /&gt;
+</code></li>
 </ul>
 </li>
 <li><p>content-language属性值</p>
 
 <ul>
 <li>用以定义页面所使用的语言代码</li>
-<li>示例：<code>&lt;meta http-equiv="content-language" content="zh-CN" /&gt;</code></li>
+<li>示例：
+<code>
+&lt;meta http-equiv="content-language" content="zh-CN" /&gt;
+</code></li>
 </ul>
 </li>
 <li><p>refresh属性值</p>
 
 <ul>
 <li>用以刷新与跳转(重定向)页面</li>
-<li>示例：5秒之后刷新本页面<code>&lt;meta http-equiv="refresh" content="5" /&gt;</code></li>
-<li>示例：5秒之后转到百度首页<code>&lt;meta http-equiv="refresh" content="5; url=http://www.baidu.com/" /&gt;</code></li>
+<li>示例：5秒之后刷新本页面
+<code>
+&lt;meta http-equiv="refresh" content="5" /&gt;
+</code></li>
+<li>示例：5秒之后转到百度首页
+<code>
+&lt;meta http-equiv="refresh" content="5; url=http://www.baidu.com/" /&gt;
+</code></li>
 </ul>
 </li>
 <li><p>expires属性值</p>
 
 <ul>
 <li>用以网页缓存过期时间</li>
-<li>示例：<code>&lt;meta http-equiv="expires" content="Sunday 26 October 2008 01:00 GMT" /&gt;</code></li>
+<li>示例：
+<code>
+&lt;meta http-equiv="expires" content="Sunday 26 October 2008 01:00 GMT" /&gt;
+</code></li>
 </ul>
 </li>
 <li><p>pragma属性值</p>
 
 <ul>
 <li>只有一个属性值no-cache，浏览器默认是缓存页面的，加上这条信息禁止浏览器缓存页面</li>
-<li>示例：<code>&lt;meta http-equiv="pragma" content="no-cache" /&gt;</code></li>
+<li>示例：
+<code>
+&lt;meta http-equiv="pragma" content="no-cache" /&gt;
+</code></li>
 </ul>
 </li>
 </ol>
@@ -152,35 +175,50 @@
 
 <ul>
 <li>用以定义页面关键词</li>
-<li>示例： <code>&lt;meta name="keywords" content="HTML XHTML" /&gt;</code></li>
+<li>示例：
+<code>
+&lt;meta name="keywords" content="HTML XHTML" /&gt;
+</code></li>
 </ul>
 </li>
 <li><p>description</p>
 
 <ul>
 <li>用以定义页面简单描述</li>
-<li>示例：<code>&lt;meta name="description" content="meta详解，描述meta的所有属性使用" /&gt;v</code></li>
+<li>示例：
+<code>
+&lt;meta name="description" content="meta详解，描述meta的所有属性使用" /&gt;
+</code></li>
 </ul>
 </li>
 <li><p>author</p>
 
 <ul>
 <li>用以定义网页的作者</li>
-<li>示例：<code>&lt;meta name="author" content="harvey-he" /&gt;</code></li>
+<li>示例：
+<code>
+&lt;meta name="author" content="harvey-he" /&gt;
+</code></li>
 </ul>
 </li>
 <li><p>copyright</p>
 
 <ul>
 <li>用以定义网页的版权所有</li>
-<li>示例： <code>&lt;meta name="copyright" content="© harvey-he" /&gt;</code></li>
+<li>示例：
+<code>
+&lt;meta name="copyright" content="© harvey-he" /&gt;
+</code></li>
 </ul>
 </li>
 <li><p>date</p>
 
 <ul>
 <li>用以定义网页的制作时间</li>
-<li>示例： <code>&lt;meta name="date" content="2008-07-12T20:50:30+00:00" /&gt;</code></li>
+<li>示例：
+<code>
+&lt;meta name="date" content="2008-07-12T20:50:30+00:00" /&gt;
+</code></li>
 </ul>
 </li>
 <li><p>robots</p>
@@ -198,7 +236,10 @@
 <li>follow：搜索引擎继续通过此网页的链接索引搜索其它的网页。</li>
 </ul>
 </li>
-<li>示例：<code>&lt;meta name="robots" content="noindex" /&gt;</code></li>
+<li>示例：
+<code>
+&lt;meta name="robots" content="noindex" /&gt;
+</code></li>
 </ul>
 </li>
 <li><p>viewport</p>
@@ -224,7 +265,10 @@
 <li>比如，你拿个3.5寸 640 * 960的iphone4，4.0寸 1280 * 720的小米2，9.7寸 1024*768的ipad，虽然设备的分辨率不同,物理尺寸也不同，但你可以通过设置viewport让它们在浏览器里有相同的分辨率。比如说，你的网站是800px宽，你可以通过设置viewport的width=800，来让你的网站在这三个不同的设备上都刚好满屏显示你的网站。</li>
 </ul>
 </li>
-<li>示例：<code>&lt;meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"&gt;</code></li>
+<li>示例：
+<code>
+&lt;meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"&gt;
+</code></li>
 </ul>
 </li>
 </ol>
@@ -293,5 +337,13 @@ $(function(){
     </footer>
 
     </div>
+    <script type="text/javascript">
+        $(function() {
+            window.prettyPrint && prettyPrint();
+        });
+        $(function() {
+            $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto');
+        });
+    </script>
   </body>
 </html>

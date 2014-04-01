@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="harvey" />
+    <title>AngularJs学习总结</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="/feed/" rel="alternate" title="harvey" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css" />
+    <link rel="stylesheet" href="/media/css/highlight.css" />
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+    <link href="/media/prettify/prettify.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/media/prettify/prettify.js"></script>
+    <script type="text/javascript" src="/media/js/outliner.js"></script>
+  </head>
+<!--  <body> 
+-->
+  <script type="text/javascript">
+    function setTimeSpan(){
+    	var date = new Date();
+    	timeSpan.innerText=date.format('yyyy-MM-dd hh:mm:ss');
+    }
+    
+    Date.prototype.format = function(format)
+		{
+    var o =
+    	{
+    	    "M+" : this.getMonth()+1, //month
+    	    "d+" : this.getDate(),    //day
+    	    "h+" : this.getHours(),   //hour
+    	    "m+" : this.getMinutes(), //minute
+    	    "s+" : this.getSeconds(), //second
+    	    "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+    	    "S" : this.getMilliseconds() //millisecond
+    	}
+    	if(/(y+)/.test(format))
+    	format=format.replace(RegExp.$1,(this.getFullYear()+"").substr(4 - RegExp.$1.length));
+    	for(var k in o)
+    	if(new RegExp("("+ k +")").test(format))
+    	format = format.replace(RegExp.$1,RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+    	return format;
+		}
+  </script>
+  <body onLoad="setInterval(setTimeSpan,1000);prettyPrint();">
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>AngularJs学习总结</h1>
+        </header>
+        <nav id="real_nav">
+        <span><a title="home" class="" href="/">home</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <!--<span><a title="友情链接" class="" href="/links/">链接</a></span>-->
+        <span><a title="guestbook" class="" href="/guestbook/">guestbook</a></span>
+        <span><a title="lab" class="" href="/lab/">lab</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+<!--        <span><a title="种子订阅" class="" href="/feed/" target="_blank">订阅</a></span> 
+-->
+        </nav>
+        <article class="content">
+        <section class="meta">
+<span class="time">
+  <time datetime="2013-07-30">2013-07-30</time>
+</span>
+
+ | 
+<span class="categories">
+  categories
+  
+  <a href="/categories/#javascript" title="javascript">javascript</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  tags
+  
+  <a href="/tags/#AngularJs" title="AngularJs">AngularJs</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h2>AngularJs学习总结</h2>
+
+<blockquote><p>应项目的需要，一个月之前开始做WebComponents、Javascript MVC框架的技术调研，由于重点是想做组件化，所以就没有考虑Backbone（去年就小试牛刀，太难用了)及其他的mvc框架，所以重点看了Ploymer，ploymer也是google的库，这个实在是未来的未来，很多东西都没有成为标准，如shadow dom也就chrome可以很好的支持，所以最终放弃，再后看了facebook的react和twitter的flight，这俩个由于版本过低，还没有正式发布，也只好作罢，偶然的机会，结识了AngularJs,一下子被他的特性吸引</p></blockquote>
+
+<h3>五大特性</h3>
+
+<ol>
+<li>双向数据绑定；</li>
+<li>模板；</li>
+<li>MVC，准确说是MVVM；</li>
+<li>依赖注入；</li>
+<li>指令（这个灰常强大，有了它我们就可以做组件了）；</li>
+</ol>
+
+
+<p>关于着五大特性的介绍可以参考Gbin1的这篇文章：
+<a href="http://www.gbin1.com/technology/javascript/20120717-AugularJS-features/">http://www.gbin1.com/technology/javascript/20120717-AugularJS-features/</a></p>
+
+<p>看完这篇文章，也可以让自己对AngularJs有一个大体的了解！</p>
+
+<blockquote><p>如果想要通过AngularJs的官方文档来学习Angular还是有一定困难的，而且官方的示例也不是很多，他的Tutorial倒是还不错，是以一个实际的项目做引导，一步步的了解AngularJs的种种特性，英文不错的话倒是可以看看，或者直接那Demo项目的源码来看也是不错地选择；</p></blockquote>
+
+<h3>学习AngularJs</h3>
+
+<ol>
+<li><p>开始学习之前应该先了解下AngularJs的原理及基本概念，达到知其然知其所以然；<br/>
+基本概念及原理：<br/>
+英文：<a href="http://docs.angularjs.org/guide/concepts">http://docs.angularjs.org/guide/concepts</a><br/>
+中文：<a href="http://www.angularjs.cn/#/A00q">http://www.angularjs.cn/#/A00q</a></p></li>
+<li><p>学习完成AngularJs的原理及基本概念，就可以跟着官方出品的Tutorial小试牛刀了，Tutorial的Demo项目是一个类似与中关村等的电子类产品报价介绍网站，只包含基本的手机列表和手机详情！<br/>
+英文：<a href="http://docs.angularjs.org/tutorial">http://docs.angularjs.org/tutorial</a><br/>
+中文：<a href="http://www.ituring.com.cn/minibook/303">http://www.ituring.com.cn/minibook/303</a>（中文的这份翻译的文档，在做单元测试的时候会有一点错误的说明，可以转回英文看一眼就好）</p></li>
+<li><p>学习完成以上的AngularJs的知识，就可以clone一份angular-seed大展拳脚了！不过下山大展拳脚之前，总要听听师傅（过来人）的忠告，推荐以下这俩篇博文：<br/>
+尘埃落定的最佳实践：<a href="http://www.lovelucy.info/angularjs-best-practices.html">http://www.lovelucy.info/angularjs-best-practices.html</a> <br/>
+破狼的经验总结：<a href="http://www.cnblogs.com/whitewolf/archive/2013/03/24/2979344.html">http://www.cnblogs.com/whitewolf/archive/2013/03/24/2979344.html</a></p></li>
+<li><p>好了！可以下山了！<br/>
+下载seed，开始闯荡江湖吧！<a href="https://github.com/angular/angular-seed">https://github.com/angular/angular-seed</a></p></li>
+</ol>
+
+
+<blockquote><p>现在的前端开发，有非常好的构建工具选择，我首推grunt，grunt就像一个手动的IDE，闯荡江湖，拥有这样的上乘武功绝学，非常有必要；</p></blockquote>
+
+<h3>使用Grunt构建AngularJs项目</h3>
+
+<p>使用grunt构建，让你拥有飞一般的感觉；</p>
+
+<ol>
+<li><p>学习Grunt<br/>
+如果你还不会使用Grunt，那这俩篇文章是很不错的入门选择：
+<a href="http://docs.spmjs.org/contrib/simple-grunt">http://docs.spmjs.org/contrib/simple-grunt</a><br/>
+<a href="http://www.jankerli.com/?p=1628">http://www.jankerli.com/?p=1628</a></p></li>
+<li><p>使用ng-Boilerplate，一个开源的基于AngularJs的Grunt构建<br/>
+<a href="https://github.com/joshdmiller/ng-boilerplate">https://github.com/joshdmiller/ng-boilerplate</a>（强烈推荐）</p></li>
+</ol>
+
+
+<h3>其他资料补充</h3>
+
+<p>AngularJs中文社区：<a href="http://www.angularjs.cn">http://www.angularjs.cn</a></p>
+
+<p>Angular-UI：<a href="http://angular-ui.github.io/">http://angular-ui.github.io/</a></p>
+
+</section>
+<section align="right">
+<br/>
+<span>
+	<a  href="/Setup-Video-Server/" class="pageNav"  >上一篇</a>
+	&nbsp;&nbsp;&nbsp;
+	<a  href="/Sublime-Text-3-Set/" class="pageNav"  >下一篇</a>
+</span>
+</section>
+
+	
+	<div class="ds-thread" />
+		
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"harvey-he"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://harvey-he.github.io/Setup-Video-Server/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://harvey-he.github.io/Sublime-Text-3-Set/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+        </article>
+        <a style="position:fixed;bottom:5px;right:5px;" href="#" title="Back to Top">
+            <img src="/assets/btt.png" />
+        </a> 
+      </div>
+
+    <footer>
+        <p><small>
+            <a href="http://github.com/harvey-he/harvey-he.github.io/new/master/_posts" target="_blank" title="撰写文章">Po</a>wer<a href="http://github.com/harvey-he/harvey-he.github.io/edit/master/_posts/2013-07-30-Angular-Learn-way.md" target="_blank" title="编辑页面">ed</a> by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="http://github.com/harvey-he/harvey-he.github.com" target="_blank" title="项目主页">GitHub</a> | Copyright 2013 - 2014 by <a href="/about/">harvey-he</a> | <span class="label label-info" id="timeSpan"></span></small></p>
+    </footer>
+
+    </div>
+    <script type="text/javascript">
+        $(function() {
+            window.prettyPrint && prettyPrint();
+        });
+        $(function() {
+            $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto');
+        });
+    </script>
+  </body>
+</html>

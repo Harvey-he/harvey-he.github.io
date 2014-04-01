@@ -45,10 +45,12 @@ tags:
 
 修改 Preferences 文件，通过 Sublime Text 3 的菜单 “Preferences > Settings - User” 可打开用户配置文件，在其中添加（或修改原来的设置）：
 
-    {
-	    "theme": "Flatland Dark.sublime-theme",
-	    "color_scheme": "Packages/Theme - Flatland/Flatland Dark.tmTheme"
-	}
+```bash
+{
+    "theme": "Flatland Dark.sublime-theme",
+    "color_scheme": "Packages/Theme - Flatland/Flatland Dark.tmTheme"
+}
+```
 
 保存便即刻生效；
 
@@ -56,17 +58,22 @@ tags:
 
 第一步：安装开源字体，“文泉驿字体
 
-    sudo apt-get install xfonts-wqy
+```bash
+sudo apt-get install xfonts-wqy
+```
 
 第二步：配置Sublime Text 3的Setting User,添加如下内容
 
-    "font_face": "WenQuanYi Micro Hei Mono"
+```bash
+"font_face": "WenQuanYi Micro Hei Mono"
+```
 
 第三步：最后安装一个sublime text 3的插件 InputHelper，用于输入中文
 
-    cd ~/.config/sublime-text-3/Packages
-
-	git clone https://github.com/xgenvn/InputHelper.git
+```bash
+cd ~/.config/sublime-text-3/Packages
+git clone https://github.com/xgenvn/InputHelper.git
+```
 
 到此，按下Ctrl + Shift + Z，输入中文；
 
