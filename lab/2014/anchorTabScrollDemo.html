@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html> 
+<head>
+	<meta charset="utf-8" />
+	<title>scroll demo</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta name="MobileOptimized" content="320">
+	
+	<link href="assets/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<script src="assets/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+	<style type="text/css">
+		ul{
+			list-style: none;
+		}
+		.bs-docs-section{
+			min-height: 960px;
+		}
+		.sidebar{
+			top:30px;
+		}
+		.anchorTab{
+			height: 60px;
+			background: #f0f6fa;
+			margin-bottom: 2px;
+			position: relative;
+		}
+		.anchorTab:hover {
+			cursor: pointer;
+		}
+		.anchorTab a{
+			height: 60px;
+			line-height: 60px;
+			text-decoration: none;
+			font-size:25px;
+			padding-left:20px;
+		}
+		.anchorTab a:hover{
+			color: none;
+		}
+		
+		.ver-inline-menu li.active{
+			background: #169ef4;
+			color: #fff;
+		}
+		.ver-inline-menu li.active a {
+			color: #fff;
+		}
+		.ver-inline-menu li.active:after {
+			content: '';
+			display: inline-block;
+			border-bottom: 15px solid transparent;
+			border-top: 15px solid transparent;
+			border-left: 15px solid #169ef4;
+			position: absolute;
+			top: 16px;
+			right: -10px;
+		}
+	</style>
+</head>
+<body class="page-full-width">
+	<div class="page-container">
+		<div class="page-content">
+			<div class="row">
+				<div class="col-md-3" id="warrp">
+					<div style="position:fixed;" class="sidebar">
+						<ul class="ver-inline-menu tabbable margin-bottom-25">
+							<li class="active anchorTab" name="area1">
+								<a href="#area1" data-toggle="tab"> 
+									区域一
+								</a>
+							</li>
+							<li class="anchorTab" name="area2">
+								<a href="#area2" data-toggle="tab"> 
+									区域二
+								</a>
+							</li>
+							<li class="anchorTab" name="area3">
+								<a href="#area3" data-toggle="tab"> 
+									区域三
+								</a>
+							</li>
+							<li class="anchorTab" name="area4">
+								<a href="#area4" data-toggle="tab"> 
+									区域四
+								</a>
+							</li>
+							<li class="anchorTab" name="area5">
+								<a href="#area5" data-toggle="tab"> 
+									区域五
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<div class="bs-docs-section area" id="area1">
+						<div class="page-header">
+					      <h1 >区域一</h1>
+					    </div>
+					</div>
+					<div class="bs-docs-section area" id="area2">
+						<div class="page-header">
+					      <h1>区域二</h1>
+					    </div>
+					</div>
+					<div class="bs-docs-section area" id="area3">
+						<div class="page-header">
+					      <h1>区域三</h1>
+					    </div>
+					</div>
+					<div class="bs-docs-section area" id="area4">
+						<div class="page-header">
+					      <h1>区域四</h1>
+					    </div>
+					</div>
+					<div class="bs-docs-section area" id="area5">
+						<div class="page-header">
+					      <h1>区域五</h1>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>  
+	</div>
+	<script>
+		$(".sidebar")[0].style.width = $("#warrp")[0].offsetWidth-20 + "px";
+
+		$('li.anchorTab').click(function() {
+            var preli = $(".active");
+            var nextli = this;
+            var scrollToDiv = this.attributes.name.nodeValue;
+            $('html, body').animate({
+                scrollTop: $('#' + scrollToDiv).offset().top
+            },
+            500,
+            function(argument) {
+                preli.removeClass('active');
+                $(nextli).addClass('active');
+            });
+        });
+
+        $(window).bind('scroll',
+        function(e) {
+            var anchorZoneArray = $(".area");
+            var scrolled = $(window).scrollTop();
+            var preli = $(".active");
+
+            for (var i = 0; i < anchorZoneArray.length; i++) {
+                if (i < anchorZoneArray.length - 1) {
+                    if (anchorZoneArray[i].offsetTop <= scrolled && scrolled < anchorZoneArray[i + 1].offsetTop) {
+                        var liAnchorTabName = anchorZoneArray[i].id;
+                        var liAnchorTab = $('li.anchorTab');
+
+                        for (var i = 0; i < liAnchorTab.length; i++) {
+                            if (liAnchorTab[i].attributes.name.nodeValue == liAnchorTabName) {
+                                preli.removeClass('active');
+                                $(liAnchorTab[i]).addClass('active');
+                            }
+                        }
+                    }else if(scrolled>anchorZoneArray[anchorZoneArray.length-1].offsetTop){
+						var liAnchorTabName = anchorZoneArray[anchorZoneArray.length-1].id;
+                        var liAnchorTab = $('li.anchorTab');
+
+                        for (var i = 0; i < liAnchorTab.length; i++) {
+                            if (liAnchorTab[i].attributes.name.nodeValue == liAnchorTabName) {
+                                preli.removeClass('active');
+                                $(liAnchorTab[anchorZoneArray.length-1]).addClass('active');
+                            }
+                        }
+                    }
+                }
+            }
+        });
+	</script>
+</body>
+</html>
