@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>deferred demo</title>
+		<script type="text/javascript" src="jquery-1.6.2.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			var wait = function (dtd) {
+				// body...
+				//var dtd = $.Deferred();
+
+				var tasks = function () {
+					// body...
+					alert("执行完成");
+
+					dtd.resolve();
+					//dtd.reject();
+				}
+
+				setTimeout(tasks,5000);
+
+				return dtd.promise();
+			}
+
+			// $.when(wait())
+			// .done(function (argument) {
+			// 	// body...
+			// 	alert("sucess");
+			// })
+			// .fail(function (argument) {
+			// 	// body...
+			// 	alert("error");
+			// });
+
+			$.Deferred(wait)
+			.done(function (argument) {
+				// body...
+				alert("success");
+			})
+			.fail(function (argument) {
+				// body...
+				alert("error");
+			})
+		</script>
+	</body>
+</html>

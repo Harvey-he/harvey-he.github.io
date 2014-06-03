@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>deferred demo</title>
+		<script type="text/javascript" src="jquery-1.6.2.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			$.when($.ajax("test.html"),$.ajax("test1.html"))
+			.done(function (argument) {
+				alert("success!")
+			})
+			.fail(function (argument) {
+				// body...
+				alert("Error");
+			})
+			.done(function (argument) {
+				// body...
+				alert("second success!")
+			})
+		</script>
+	</body>
+</html>
