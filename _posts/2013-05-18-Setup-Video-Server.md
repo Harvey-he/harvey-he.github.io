@@ -84,7 +84,6 @@ tar zxvf nginx-1.0.11.tar.gz
  
 ```bash
 wget http://h264.code-shop.com/download/nginx_mod_h264_streaming-2.2.7.tar.gz
-
 tar zxvfnginx_mod_h264_streaming-2.2.7.tar.gz
 ```
 修改解压文件下
