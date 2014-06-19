@@ -37,6 +37,24 @@
     <priority>1.0</priority>
   </url>
   
+  <url>
+    <loc>http://harvey-he.github.io/HTML-learn-Nav/</loc>
+    
+    <lastmod>2012-08-01T00:00:00+08:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://harvey-he.github.io/Source-Install-GCC-And-Pdf2Json/</loc>
+    
+    <lastmod>2012-07-01T00:00:00+08:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
   
   
   

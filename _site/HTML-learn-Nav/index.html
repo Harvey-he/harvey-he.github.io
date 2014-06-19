@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="harvey" />
+    <title>HTML5学习导航</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="/feed/" rel="alternate" title="harvey" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css" />
+    <link rel="stylesheet" href="/media/css/highlight.css" />
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+    <link href="/media/prettify/prettify.css" type="text/css" rel="stylesheet" />
+    <link href="/media/highlight/monokai_sublime.min.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/media/highlight/highlight.min.js"></script>
+    <script type="text/javascript" src="/media/prettify/prettify.js"></script>
+    <script type="text/javascript" src="/media/js/outliner.js"></script>
+  </head>
+<!--  <body> 
+-->
+  <script type="text/javascript">
+    function setTimeSpan(){
+    	var date = new Date();
+    	timeSpan.innerText=date.format('yyyy-MM-dd hh:mm:ss');
+    }
+    
+    Date.prototype.format = function(format)
+		{
+    var o =
+    	{
+    	    "M+" : this.getMonth()+1, //month
+    	    "d+" : this.getDate(),    //day
+    	    "h+" : this.getHours(),   //hour
+    	    "m+" : this.getMinutes(), //minute
+    	    "s+" : this.getSeconds(), //second
+    	    "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+    	    "S" : this.getMilliseconds() //millisecond
+    	}
+    	if(/(y+)/.test(format))
+    	format=format.replace(RegExp.$1,(this.getFullYear()+"").substr(4 - RegExp.$1.length));
+    	for(var k in o)
+    	if(new RegExp("("+ k +")").test(format))
+    	format = format.replace(RegExp.$1,RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+    	return format;
+		}
+  </script>
+  <body onLoad="setInterval(setTimeSpan,1000);prettyPrint();">
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>HTML5学习导航</h1>
+        </header>
+        <nav id="real_nav">
+        <span><a title="home" class="" href="/">home</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <!--<span><a title="友情链接" class="" href="/links/">链接</a></span>-->
+        <span><a title="guestbook" class="" href="/guestbook/">guestbook</a></span>
+        <span><a title="lab" class="" href="/lab/">lab</a></span>
+        <span><a title="resume" class="" href="/resume/">resume</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+<!--        <span><a title="种子订阅" class="" href="/feed/" target="_blank">订阅</a></span> 
+-->
+        </nav>
+        <article class="content">
+        <section class="meta">
+<span class="time">
+  <time datetime="2012-08-01">2012-08-01</time>
+</span>
+
+ | 
+<span class="categories">
+  categories
+  
+  <a href="/categories/#html5" title="html5">html5</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  tags
+  
+  <a href="/tags/#html5,learn,导航" title="html5,learn,导航">html5,learn,导航</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h2>HTML5学习导航</h2>
+
+<p>对于初学者来说还是要先学习基础部分的知识，有基础的童鞋就可以跳过这个基础知识部分了！<br/>
+必备基础知识(初学者）<br/>
+基础知识主要是包括HTML，CSS，JavaScript</p>
+
+<h3>HTML&amp;CSS</h3>
+
+<h4>在线学习资源</h4>
+
+<p>HTML:<br/>
+<a href="http://www.w3school.com.cn/html/index.asp">http://www.w3school.com.cn/html/index.asp</a><br/>
+<a href="http://www.w3school.com.cn/xhtml/index.asp">http://www.w3school.com.cn/xhtml/index.asp</a></p>
+
+<p>CSS:<br/>
+<a href="http://www.w3school.com.cn/css/index.asp">http://www.w3school.com.cn/css/index.asp</a></p>
+
+<h4>电子书</h4>
+
+<p>《Learn HTML and CSS with w3Schools》<br/>
+《Sams Teach Yourself HTML and CSS in 24 Hours》</p>
+
+<h4>补充</h4>
+
+<p>无网络：可阅读离线版《w3cschool.chm》<br/>
+W3Cfuns：<a href="http://www.w3cfuns.com/">http://www.w3cfuns.com/</a><br/>
+Codecademy：<a href="http://www.codecademy.com/zh/tracks/web">http://www.codecademy.com/zh/tracks/web</a></p>
+
+<h3>JavaScript</h3>
+
+<h4>在线学习资源</h4>
+
+<p>JavaScript基础知识：<a href="http://www.w3school.com.cn/js/index.asp">http://www.w3school.com.cn/js/index.asp</a></p>
+
+<p>DOM&amp;BOM：<a href="http://www.w3school.com.cn/htmldom/index.asp">http://www.w3school.com.cn/htmldom/index.asp</a></p>
+
+<p>Jquery：<a href="http://www.w3school.com.cn/jquery/index.asp">http://www.w3school.com.cn/jquery/index.asp</a></p>
+
+<h4>电子书</h4>
+
+<p>《深入浅出JavaScript》</p>
+
+<h4>补充</h4>
+
+<p>Mozilla developer center：<a href="https://developer.mozilla.org/zh-CN/docs/JavaScript">https://developer.mozilla.org/zh-CN/docs/JavaScript</a></p>
+
+<p>Codecademy：<a href="http://www.codecademy.com/zh/tracks/javascript">http://www.codecademy.com/zh/tracks/javascript</a></p>
+
+<p>博文：<a href="http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html">http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html</a></p>
+
+<h3>HTML5</h3>
+
+<h4>基础扫盲</h4>
+
+<p>HTML5：<a href="http://www.w3school.com.cn/html5/">http://www.w3school.com.cn/html5/</a></p>
+
+<p>CSS3： <a href="http://www.w3schools.com/css3/default.asp">http://www.w3schools.com/css3/default.asp</a></p>
+
+<h4>进阶</h4>
+
+<p>HTML5专题：<a href="http://html5demos.tfan.org/">http://html5demos.tfan.org/</a></p>
+
+<p>HTML5研究小组资源：<a href="http://www.mhtml5.com/resources">http://www.mhtml5.com/resources</a></p>
+
+<p>HTML5Demo：<a href="http://html5demos.com/">http://html5demos.com/</a></p>
+
+<p>MDN：<a href="https://developer.mozilla.org/zh-CN/docs/HTML/HTML5">https://developer.mozilla.org/zh-CN/docs/HTML/HTML5</a></p>
+
+<h3>调试</h3>
+
+<p>Chrome Dev Tools：</p>
+
+<p><a href="https://developers.google.com/chrome-developer-tools/">https://developers.google.com/chrome-developer-tools/</a></p>
+
+<p><a href="http://jinlong.github.io/blog/2013/08/29/devtoolsecrets/">http://jinlong.github.io/blog/2013/08/29/devtoolsecrets/</a></p>
+
+<h3>编辑器</h3>
+
+<h4>Sublime Text 2</h4>
+
+<p>使用教程：</p>
+
+<p><a href="http://drewbarontini.com/setup/sublime-text/">http://drewbarontini.com/setup/sublime-text/</a></p>
+
+<p><a href="http://lucifr.com/2011/08/31/sublime-text-2-tricks-and-tips/">http://lucifr.com/2011/08/31/sublime-text-2-tricks-and-tips/</a></p>
+
+<p><a href="http://www.qianduan.net/essential-to-sublime-the-text-2-plugins.html">http://www.qianduan.net/essential-to-sublime-the-text-2-plugins.html</a></p>
+
+<p><a href="https://tutsplus.com/course/improve-workflow-in-sublime-text-2/">https://tutsplus.com/course/improve-workflow-in-sublime-text-2/</a></p>
+
+<h3>框架推荐</h3>
+
+<h4>Cocos2d-html5</h4>
+
+<p>起步：</p>
+
+<p><a href="http://cocos2d-x.org/projects/cocos2d-x/wiki/Getting_Started_with_Cocos2d-html5">http://cocos2d-x.org/projects/cocos2d-x/wiki/Getting_Started_with_Cocos2d-html5</a></p>
+
+<p>下载：</p>
+
+<p><a href="http://cocos2d-x.org/projects/cocos2d-x/wiki/Download">http://cocos2d-x.org/projects/cocos2d-x/wiki/Download</a></p>
+
+<p>学习参考：</p>
+
+<p><a href="http://www.cocos2d-x.org/projects/cocos2d-x/wiki/Cocos2d-html5">http://www.cocos2d-x.org/projects/cocos2d-x/wiki/Cocos2d-html5</a></p>
+
+<h3>推荐关注网站</h3>
+
+<p>Alloyteam Github：<a href="http://alloyteam.github.io/">http://alloyteam.github.io/</a></p>
+
+<p>Alloyteam Blog：<a href="http://www.alloyteam.com/">http://www.alloyteam.com/</a></p>
+
+<p>HTML5 Rocks：<a href="http://www.html5rocks.com/en/">http://www.html5rocks.com/en/</a></p>
+
+<p>MDN：https:<a href="http://developer.mozilla.org/zh-CN/">http://developer.mozilla.org/zh-CN/</a></p>
+
+<p>PhoneGap：<a href="http://www.phonegapcn.com/">http://www.phonegapcn.com/</a></p>
+
+<p>前端观察：<a href="http://www.qianduan.net/">http://www.qianduan.net/</a></p>
+
+<p>HTML5中国：<a href="http://www.html5cn.org/">http://www.html5cn.org/</a></p>
+
+</section>
+<section align="right">
+<br/>
+<span>
+	<a  href="/Source-Install-GCC-And-Pdf2Json/" class="pageNav"  >上一篇</a>
+	&nbsp;&nbsp;&nbsp;
+	<a  href="/Setup-Video-Server/" class="pageNav"  >下一篇</a>
+</span>
+</section>
+
+	
+	<div class="ds-thread" />
+		
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"harvey-he"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        url = 'http://harvey-he.github.io/Source-Install-GCC-And-Pdf2Json/';
+        
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://harvey-he.github.io/Setup-Video-Server/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+        </article>
+        <a style="position:fixed;bottom:5px;right:5px;" href="#" title="Back to Top">
+            <img src="/assets/btt.png" />
+        </a> 
+      </div>
+
+    <footer>
+        <p><small>
+            <a href="http://github.com/harvey-he/harvey-he.github.io/new/master/_posts" target="_blank" title="撰写文章">Po</a>wer<a href="http://github.com/harvey-he/harvey-he.github.io/edit/master/_posts/2012-08-01-HTML-learn-Nav.md" target="_blank" title="编辑页面">ed</a> by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="http://github.com/harvey-he/harvey-he.github.com" target="_blank" title="项目主页">GitHub</a> | Copyright 2013 - 2014 by <a href="/about/">harvey-he</a> | <span class="label label-info" id="timeSpan"></span></small></p>
+    </footer>
+
+    </div>
+    <a href="https://github.com/Harvey-he"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+    <script type="text/javascript">
+        $(function() {
+            window.prettyPrint && prettyPrint();
+        });
+        $(function() {
+            $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto');
+        });
+    </script>
+  </body>
+</html>

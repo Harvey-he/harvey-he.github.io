@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="harvey" />
+    <title>Centos6.0 源码编译安装gcc4.6.1并安装pdf2json</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="/feed/" rel="alternate" title="harvey" type="application/atom+xml" />
+    <link rel="stylesheet" href="/media/css/style.css" />
+    <link rel="stylesheet" href="/media/css/highlight.css" />
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+    <link href="/media/prettify/prettify.css" type="text/css" rel="stylesheet" />
+    <link href="/media/highlight/monokai_sublime.min.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/media/highlight/highlight.min.js"></script>
+    <script type="text/javascript" src="/media/prettify/prettify.js"></script>
+    <script type="text/javascript" src="/media/js/outliner.js"></script>
+  </head>
+<!--  <body> 
+-->
+  <script type="text/javascript">
+    function setTimeSpan(){
+    	var date = new Date();
+    	timeSpan.innerText=date.format('yyyy-MM-dd hh:mm:ss');
+    }
+    
+    Date.prototype.format = function(format)
+		{
+    var o =
+    	{
+    	    "M+" : this.getMonth()+1, //month
+    	    "d+" : this.getDate(),    //day
+    	    "h+" : this.getHours(),   //hour
+    	    "m+" : this.getMinutes(), //minute
+    	    "s+" : this.getSeconds(), //second
+    	    "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+    	    "S" : this.getMilliseconds() //millisecond
+    	}
+    	if(/(y+)/.test(format))
+    	format=format.replace(RegExp.$1,(this.getFullYear()+"").substr(4 - RegExp.$1.length));
+    	for(var k in o)
+    	if(new RegExp("("+ k +")").test(format))
+    	format = format.replace(RegExp.$1,RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+    	return format;
+		}
+  </script>
+  <body onLoad="setInterval(setTimeSpan,1000);prettyPrint();">
+    <div id="container">
+      <div id="main" role="main">
+        <header>
+        <h1>Centos6.0 源码编译安装gcc4.6.1并安装pdf2json</h1>
+        </header>
+        <nav id="real_nav">
+        <span><a title="home" class="" href="/">home</a></span>
+        <span><a title="categories" class="" href="/categories/">categories</a></span>
+        <span><a title="tags" class="" href="/tags/">tags</a></span>
+        <!--<span><a title="友情链接" class="" href="/links/">链接</a></span>-->
+        <span><a title="guestbook" class="" href="/guestbook/">guestbook</a></span>
+        <span><a title="lab" class="" href="/lab/">lab</a></span>
+        <span><a title="resume" class="" href="/resume/">resume</a></span>
+        <span><a title="about" class="" href="/about/">about</a></span>
+<!--        <span><a title="种子订阅" class="" href="/feed/" target="_blank">订阅</a></span> 
+-->
+        </nav>
+        <article class="content">
+        <section class="meta">
+<span class="time">
+  <time datetime="2012-07-01">2012-07-01</time>
+</span>
+
+ | 
+<span class="categories">
+  categories
+  
+  <a href="/categories/#linux" title="linux">linux</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  tags
+  
+  <a href="/tags/#linux,gcc,服务器,pdf2json" title="linux,gcc,服务器,pdf2json">linux,gcc,服务器,pdf2json</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h2>Centos6.0 源码编译安装gcc4.6.1并安装pdf2json</h2>
+
+<blockquote><p>这几天接到个任务，要在Centos上源码编译安装PDF2JSON<a href="http://code.google.com/p/pdf2json/">http://code.google.com/p/pdf2json/</a>，试了很多次都编译通不过，总是出错，于是决定在ubuntu上装一把，结果一次性通过，思考良久，如果pdf2json不依赖系统的库函数的话，那么在整个安装过程中，唯有俩者的编译器不一样，ubuntu是gcc-4.6.1而Centos是gcc-4.4.6，因为是yum安装的 所以没有最新版本的，于是我猜想是编译器版本太低，最后经过测试果不其然，还真是centos的gcc编译器版本太低了！下面是我的整个安装过程，作为自己的笔记！</p></blockquote>
+
+<pre><code class="bash">yum install gcc*
+
+wget http://ftp.gnu.org/gnu/mpfr/mpfr-3.1.0.tar.bz2
+wget http://ftp.gnu.org/gnu/gmp/gmp-5.0.4.tar.bz2
+wget http://www.multiprecision.org/mpc/download/mpc-0.9.tar.gz
+wget http://ftp.gnu.org/gnu/gcc/gcc-4.6.1/gcc-4.6.1.tar.bz2
+
+tar -vjxf gmp-5.0.4.tar.bz2 -C /usr/src/
+tar -vjxf mpfr-3.1.0.tar.bz2 -C /usr/src/
+tar -vxf mpc-0.9.tar.gz -C /usr/src/
+tar -vjxf gcc-4.6.1.tar.bz2 -C /usr/src/
+
+
+=============================================================================
+
+cd ~
+
+mkdir gmp-build
+
+cd gmp-build
+
+/usr/src/gmp-5.0.4/configure --prefix=/usr/local/gmp-5.0.4
+
+make
+
+make check
+
+make install
+
+=============================================================================
+
+cd ~
+
+mkdir mpfr-build
+
+cd mpfr-build
+
+/usr/src/mpfr-3.1.0/configure --prefix=/usr/local/mpfr-3.1.0 --with-gmp=/usr/local/gmp-5.0.4
+
+make
+
+make check
+
+make install
+
+=============================================================================
+
+cd ~
+
+mkdir mpc-build
+
+cd mpc-build
+
+/usr/src/mpc-0.9/configure --prefix=/usr/local/mpc-0.9 --with-mpfr=/usr/local/mpfr-3.1.0 --with-gmp=/usr/local/gmp-5.0.4
+
+make
+
+make check
+
+make install
+
+=============================================================================
+
+cd ~
+
+mkdir gcc-build
+
+cd gcc-build
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/mpc-0.9/lib:/usr/local/gmp-5.0.4/lib:/usr/local/mpfr-3.1.0/lib
+
+/usr/src/gcc-4.6.1/configure --prefix=/usr/local/gcc-4.6.1 --with-mpc=/usr/local/mpc-0.9 --with-mpfr=/usr/local/mpfr-3.1.0 --with-gmp=/usr/local/gmp-5.0.4 --enable-languages=c,c++ --enable-threads=posix --disable-checking --disable-multilib
+
+make &amp;&amp; make install
+
+
+==============================================================================
+
+cd /usr/bin
+
+ln -s /usr/local/gcc-4.6.1/bin/gcc gcc46
+ln -s /usr/local/gcc-4.6.1/bin/g++ g++46
+
+cd /etc
+
+vi bashrc
+
+行尾添加：
+LD_LIBRARY_PATH=:/usr/local/mpc-0.8.1/lib:/usr/local/gmp-4.3.2/lib:/usr/local/mpfr-2.4.2/lib:/usr/local/gcc-4.5.0/lib
+
+export LD_LIBRARY_PATH
+
+重启
+
+==============================================================================
+
+wget http://pdf2json.googlecode.com/files/pdf2json-0.52-source.tar.gz
+
+tar zxvf pdf2json-0.52-source.tar.gz
+
+./configure
+
+make &amp;&amp; make install
+</code></pre>
+
+</section>
+<section align="right">
+<br/>
+<span>
+	<a   class="pageNavInvalid"  >上一篇</a>
+	&nbsp;&nbsp;&nbsp;
+	<a  href="/HTML-learn-Nav/" class="pageNav"  >下一篇</a>
+</span>
+</section>
+
+	
+	<div class="ds-thread" />
+		
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"harvey-he"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+<script type="text/javascript">
+$(function(){
+  $(document).keydown(function(e) {
+    var url = false;
+        if (e.which == 37 || e.which == 74) {  // Left arrow and J
+            
+        }
+        else if (e.which == 39 || e.which == 75) {  // Right arrow and K
+            
+        url = 'http://harvey-he.github.io/HTML-learn-Nav/';
+        
+        }
+        if (url) {
+            window.location = url;
+        }
+  });
+})
+</script>
+
+        </article>
+        <a style="position:fixed;bottom:5px;right:5px;" href="#" title="Back to Top">
+            <img src="/assets/btt.png" />
+        </a> 
+      </div>
+
+    <footer>
+        <p><small>
+            <a href="http://github.com/harvey-he/harvey-he.github.io/new/master/_posts" target="_blank" title="撰写文章">Po</a>wer<a href="http://github.com/harvey-he/harvey-he.github.io/edit/master/_posts/2012-07-01-Source-Install-GCC-And-Pdf2Json.md" target="_blank" title="编辑页面">ed</a> by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="http://github.com/harvey-he/harvey-he.github.com" target="_blank" title="项目主页">GitHub</a> | Copyright 2013 - 2014 by <a href="/about/">harvey-he</a> | <span class="label label-info" id="timeSpan"></span></small></p>
+    </footer>
+
+    </div>
+    <a href="https://github.com/Harvey-he"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+    <script type="text/javascript">
+        $(function() {
+            window.prettyPrint && prettyPrint();
+        });
+        $(function() {
+            $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto');
+        });
+    </script>
+  </body>
+</html>
