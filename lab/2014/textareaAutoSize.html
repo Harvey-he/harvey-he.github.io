@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自动增加行数Textarea</title>
+	<script src="http://g.tbcdn.cn/ebook/mlib/zepto/1.1.3/zepto-combo.js"></script>
+</head>
+<body>
+	<textarea name="cmContent" placeholder="来残酷的点评它吧"></textarea>
+	<style>
+		textarea {
+		    border: none;
+		    height: 20px;
+		    width: 200px;
+		    line-height: 20px;
+		    font-size: 16px;
+		    color: #999;
+		    border-bottom: 1px solid #eee;
+		    min-height: 20px;
+		    outline: none;
+		}
+		.txtstuff {
+		    resize: none; /* remove this if you want the user to be able to resize it in modern browsers */
+		    overflow: hidden;
+		}
+
+		.hiddendiv {
+		    display: none;
+		    white-space: pre-wrap;
+		    word-wrap: break-word;
+		    overflow-wrap: break-word; /* future version of deprecated 'word-wrap' */
+		}
+		.common {    
+		    min-height: 20px;
+		    overflow: hidden;
+		    font-size: 16px;
+		    width: 200px;
+		}
+		.lbr {
+		    line-height: 3px;
+		}
+	</style>
+	<script>
+		var Z = Zepto;
+		// 依照内容动态设置textarea的行数
+		var txt = Z('textarea'),
+			hiddenDiv = $(document.createElement('div')),
+			content = null;
+
+		txt.addClass('txtstuff');
+		hiddenDiv.addClass('hiddendiv common');
+
+		Z('body').append(hiddenDiv);
+
+		txt.on('keyup', function() {
+
+			Z('.hiddendiv').show();
+			content = Z(this).val();
+
+			content = content.replace(/\n/g, '<br>');
+			hiddenDiv.html(content + '<br class="lbr">');
+
+			Z(this).css('height', hiddenDiv.height());
+
+		});
+	</script>
+</body>
+</html>
