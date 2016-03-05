@@ -2,7 +2,7 @@
 layout: post
 title: "深入了解JavaScript数组和对象的循环遍历"
 categories:
-- javaScript
+- Javascript
 tags:
 - 深入了解JavaScript
 ---
